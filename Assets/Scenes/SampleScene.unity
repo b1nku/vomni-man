@@ -825,7 +825,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 2186430941476567602, guid: 5dc7f22637f012636b924883d0ed21b9, type: 3}
+  m_Mesh: {fileID: 2186430941476567602, guid: 4904c581995f41b088557739e3f36a32, type: 3}
 --- !u!65 &683796234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6199,6 +6199,7 @@ GameObject:
   - component: {fileID: 1371719082}
   - component: {fileID: 1371719083}
   - component: {fileID: 1371719084}
+  - component: {fileID: 1371719085}
   m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
@@ -6414,6 +6415,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraProximityDither
   _fadeStartDistance: 2
   _fadeEndDistance: 0.5
+--- !u!114 &1371719085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371719075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea34442c03dca9e88c34c275eca7ed0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VomitAbility
+  _projectilePrefab: {fileID: 6982143414209652664, guid: 773c868d331031fd5bd7733a0482b33f, type: 3}
+  _mouthTransform: {fileID: 942272549}
+  _projectileForce: 5
+  _sprayRange: 4
+  _sprayConeAngle: 55
+  _sprayRayCount: 1
+  _spraySplatRadius: 0.032
+  _paintMask:
+    serializedVersion: 2
+    m_Bits: 503
 --- !u!1 &2075685990
 GameObject:
   m_ObjectHideFlags: 0
@@ -6653,7 +6676,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3594243246289295467}
-  m_Mesh: {fileID: 2186430941476567602, guid: 5dc7f22637f012636b924883d0ed21b9, type: 3}
+  m_Mesh: {fileID: 2186430941476567602, guid: 4904c581995f41b088557739e3f36a32, type: 3}
 --- !u!23 &2005229715149905863
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6874,6 +6897,7 @@ GameObject:
   - component: {fileID: 1607021915580731269}
   - component: {fileID: 5638874407223844472}
   - component: {fileID: 683796233}
+  - component: {fileID: 5638874407223844473}
   m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
@@ -7026,6 +7050,21 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5638874407223844473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3594243246289295467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0cbc72aa5da86c1bb7216b6de883037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VomitSurface
+  _resolution: 2048
+  _splat: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+  _splatShader: {fileID: 4800000, guid: 1d34c903b0c8743f39196609ce52405f, type: 3}
 --- !u!1 &5769484664495988113
 GameObject:
   m_ObjectHideFlags: 0
@@ -7185,7 +7224,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1049928748687988745, guid: 5dc7f22637f012636b924883d0ed21b9, type: 3}
 --- !u!4 &7272638917048058282
