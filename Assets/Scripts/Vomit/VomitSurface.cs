@@ -16,7 +16,7 @@ public class VomitSurface : MonoBehaviour
 
     void Awake()
     {
-        _inkRT = new RenderTexture(_resolution, _resolution, 0, RenderTextureFormat.R8);
+        _inkRT = new RenderTexture(_resolution, _resolution, 0, RenderTextureFormat.ARGB32);
         _inkRT.filterMode = FilterMode.Bilinear;
         _inkRT.Create();
 

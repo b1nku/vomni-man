@@ -40,7 +40,7 @@ public class PhysicsController : MonoBehaviour
     bool didLastRayHit;
 
     [Header("Other fields")]
-    [SerializeField] MeshRenderer _playerBodyMesh;
+    [SerializeField] SkinnedMeshRenderer _playerBodyMesh;
     [SerializeField] Material[] _playerMaterial;
     [SerializeField] LayerMask _layerMask;
     [SerializeField] ParticleSystem _dustParticleSystem;
@@ -204,8 +204,8 @@ public class PhysicsController : MonoBehaviour
         _moveInput = new Vector3(_previousMovement.x, 0f, _previousMovement.y);
         _moveInput = AdjustInputToFaceCamera(_moveInput);
 
-        _rayToGroundLength = _isFloating ? 6f : 3f;
-        _rideHeight = _isFloating ? 3.5f : 1.75f;
+        //_rayToGroundLength = _isFloating ? 6f : 3f;
+        //_rideHeight = _isFloating ? 3.5f : 1.75f;
 
         (bool rayHitGround, RaycastHit rayHit) = RaycastToGround();
         SetPlatform(rayHit);

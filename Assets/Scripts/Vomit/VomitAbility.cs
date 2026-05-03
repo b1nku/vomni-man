@@ -10,12 +10,13 @@ public class VomitAbility : MonoBehaviour
   [SerializeField] float _projectileForce = 20f;
 
   [Header("Spray")]
-  [SerializeField] float _sprayRange = 4f;
   [SerializeField] float _sprayConeAngle = 30f;
   [SerializeField] int _sprayRayCount = 12;
-  [SerializeField] float _spraySplatRadius = 0.08f;
-  [SerializeField] LayerMask _paintMask = ~0;
   [SerializeField] float _sprayInterval = 0.05f;
+
+  [Header("Stomach")]
+  [SerializeField] float _projectileDrainAmount = 20f;
+  [SerializeField] float _sprayDrainAmount = 3f;
 
   PlayerInputActions _input;
   float _nextSprayTime;
@@ -46,6 +47,7 @@ public class VomitAbility : MonoBehaviour
 
   void FireProjectile()
   {
+    if (!StomachSystem.Instance.TryDrain(_projectileDrainAmount)) return;
     GameObject p = Instantiate(_projectilePrefab, _mouthTransform.position, _mouthTransform.rotation);
     IgnorePlayerCollision(p);
     p.GetComponent<Rigidbody>().AddForce(_mouthTransform.forward * _projectileForce, ForceMode.Impulse);
@@ -60,6 +62,7 @@ public class VomitAbility : MonoBehaviour
 
   void FireSpray()
   {
+    if (!StomachSystem.Instance.TryDrain(_sprayDrainAmount)) return;
     for (int i = 0; i < _sprayRayCount; i++)
     {
       Vector3 dir = Quaternion.Euler(
@@ -70,12 +73,6 @@ public class VomitAbility : MonoBehaviour
       GameObject p = Instantiate(_projectilePrefab, _mouthTransform.position, _mouthTransform.rotation);
       IgnorePlayerCollision(p);
       p.GetComponent<Rigidbody>().AddForce(dir * (_projectileForce / 4f), ForceMode.Impulse);
-
-      if (Physics.Raycast(_mouthTransform.position, dir, out RaycastHit hit, _sprayRange, _paintMask)
-          && hit.collider is MeshCollider)
-      {
-        hit.collider.GetComponent<VomitSurface>()?.Paint(hit.textureCoord, _spraySplatRadius);
-      }
     }
   }
 }

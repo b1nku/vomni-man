@@ -305,5 +305,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9764b6a934a5f4bb89d8b63277d4fb0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VomitProjectile
-  _splatRadius: 0.032
+  _splatRadius: 0.064
   _lifeTime: 5

@@ -14,16 +14,12 @@ public class VomitProjectile : MonoBehaviour
     if (surface == null) { Destroy(gameObject); return; }
 
     // Get UV at hit point via mesh raycast
-    if (col.collider is MeshCollider mc)
+    if (col.collider is MeshCollider)
     {
-      Debug.Log("Projectile hit wall :D");
-      // Unity should provide UV on MeshCollider hits via Physics.Raycast ->
-      Ray ray = new Ray(contact.point - contact.normal * 0.01f, contact.normal);
-      if (Physics.Raycast(ray, out RaycastHit hit, 0.05f))
-      {
-        Debug.Log("Painting wall :D");
+      GetComponent<Collider>().enabled = false;
+      Ray ray = new Ray(contact.point + contact.normal * 0.1f, -contact.normal);
+      if (Physics.Raycast(ray, out RaycastHit hit, 0.2f))
         surface.Paint(hit.textureCoord, _splatRadius);
-      }
     }
 
     Destroy(gameObject);
